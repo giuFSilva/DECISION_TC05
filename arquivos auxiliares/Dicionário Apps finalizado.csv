@@ -1,0 +1,45 @@
+ano_conclusao;string;df_apps;Ano de conclusao do curso
+area_atuacao;string;df_apps;area de atuacao profissional 
+certificacoes;string;df_apps;certificacoes profissionais
+codigo_profissional;string;df_apps;Identificador unico do profissional no sistema
+conhecimentos_tecnicos;string;df_apps;Lista de conhecimentos tecnicos  do profissional
+cpf;string;df_apps;CPF do candidato
+cursos;string;df_apps;Cursos de formacao realizados
+cv_en;string;df_apps;CV em ingles 
+cv_pt;string;df_apps;Cvem portugues
+data_aceite;datetime;df_apps;Data de aceite da proposta (caso aprovado)
+data_atualizacao;datetime;df_apps;Data da utima atualizacao do cadastro
+data_criacao;datetime;df_apps;Data de criacao do cadastro na plataforma
+data_nascimento;datetime;df_apps;Data de nascimento do profissional
+download_cv;string;df_apps;Nome e extensao do arquivo do currÃ­culo
+email;string;df_apps;E-mail principal do profissional
+email_secundario;string;df_apps;E-mail secundario do profissional
+endereco;string;df_apps;endereço  completo do profissional
+estado_civil;string;df_apps;Estado civil do profissional
+experiencias;string;df_apps;Resumo das experiencias profissionais
+facebook;string;df_apps;Perfil do Facebook do profissional
+fonte_indicacao;string;df_apps;Fonte pela qual o profissional foi indicado
+inserido_por;string;df_apps;responsavel pelo cadastro do CV
+instituicao_ensino_superior;string;df_apps;insttituicao de ensino superior frequentada
+local;string;df_apps;Local de residencia do candidato
+nivel_academico;string;df_apps;nivel de escolaridade do profissional
+nivel_espanhol;string;df_apps;nivel de espanhol do profissional
+nivel_ingles;string;df_apps;nivel de ingles  do profissional
+nivel_profissional;string;df_apps;nivel profissional do candidato 
+nome;string;df_apps;Nome completo do profissional
+nome_coluna;string;df_origem;descricao
+objetivo_profissional;string;df_apps;Objetivo ou cargo desejado pelo candidato
+outras_certificacoes;string;df_apps;Outras certificacoes adicionais
+outro_curso;string;df_apps;Outros cursos realizados pelo profissional
+outro_idioma;string;df_apps;Outros idiomas falados pelo profissional
+pcd;string;df_apps;Indica se o profissional e pessoa com deficiencia (PCD)
+qualificacoes;string;df_apps;descricao das qualificacoes profissionais 
+remuneracao;float;df_apps;Expectativa de remuneracao do profissional
+sabendo_de_nos_por;string;df_apps;Como o candidato conheceu a vaga ou plataforma
+sexo;string;df_apps;Sexo do profissional
+skype;string;df_apps;usuario de Skype do profissional
+telefone;object;df_apps;Telefone principal do profissional
+telefone_celular;object;df_apps;Numero de celular do profissional
+telefone_recado;object;df_apps;Telefone de recado do profissional
+titulo_profissional;string;df_apps;titulo ou cargo pretendido
+url_linkedin;string;df_apps;Link do perfil do LinkedIn do profissional

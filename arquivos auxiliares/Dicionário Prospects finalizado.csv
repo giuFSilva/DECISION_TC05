@@ -1,0 +1,11 @@
+nome_coluna;antes;tipo_dado;df_origem;descricao
+nome;object;string;df_prospects;Nome completo do candidato
+codigo;object;int;df_prospects;Identificador único  do candidato
+situacao_candidado;object;string;df_prospects;Status atual do candidato no processo seletivo
+data_candidatura;object;datetime;df_prospects;Data em que o candidato aplicou a  vaga
+ultima_atualizacao;object;datetime;df_prospects;Data da utima atualizacao do status ou dados do candidato
+comentario;object;string;df_prospects;Observacoes registradas sobre o candidato
+recrutador;object;string;df_prospects;Nome do recrutador responsavel pela vaga
+vaga_id;object;int;df_prospects;Identificador da vaga associada ao candidato
+titulo_vaga;object;string;df_prospects;titulo da vaga a qual o candidato esta se aplicando
+modalidade_vaga;object;string;df_prospects;Formato de contratacao da vaga (CLT, PJ, etc.)

@@ -1,0 +1,46 @@
+analista_responsavel;string;df_vagas;Analista de recrutamento responsável pela vaga
+areas_atuacao;string;df_vagas;Área(s) de atuação da vaga
+bairro;string;df_vagas;Bairro onde a vaga será exercida
+cidade;string;df_vagas;Cidade de atuação da vaga
+cliente;string;df_vagas;Nome do cliente que receberá o profissional
+competencia_tecnicas_e_comportamentais;string;df_vagas;Competências técnicas e comportamentais requeridas
+data_final;datetime;df_vagas;Data prevista para término na vaga (caso haja contrato com prazo)
+data_inicial;datetime;df_vagas;Data prevista para início na vaga
+data_requicisao;datetime;df_vagas;Data em que a vaga foi solicitada à consultoria
+demais_observacoes;string;df_vagas;Outras observações relevantes sobre a vaga
+empresa_divisao;string;df_vagas;Divisão ou unidade interna responsável pela vaga
+equipamentos_necessarios;string;df_vagas;Equipamentos que o profissional deve possuir ou utilizar
+estado;string;df_vagas;Estado onde a vaga está localizada
+faixa_etaria;int;df_vagas;Faixa de idade aceitável para o cargo
+habilidades_comportamentais_necessarias;string;df_vagas;Campo descritivo com observações sobre habilidades comportamentais
+horario_trabalho;string;df_vagas;Horário de trabalho previsto
+limite_esperado_para_contratacao;datetime;df_vagas;Prazo máximo desejado para contratação
+local_trabalho;int;df_vagas;Código interno ou identificação do local de trabalho (necessita validação)
+nivel profissional;string;df_vagas;Nível hierárquico/profissional esperado
+nivel_academico;string;df_vagas;Escolaridade mínima exigida
+nivel_espanhol;string;df_vagas;Nível de espanhol exigido
+nivel_ingles;string;df_vagas;Nível de inglês exigido
+nome;string;df_vagas;Nome do candidato (possivelmente incorreta no df_vagas, requer verificação)
+nome_coluna;string;df_origem;descricao
+nome_substituto;string;df_vagas;Nome do profissional que será substituído (caso aplicável)
+objetivo_vaga;string;df_vagas;Motivo da abertura da vaga (ex: nova posição, substituição)
+origem_vaga;string;df_vagas;Origem da necessidade (ex: nova, substituição)
+outro_idioma;string;df_vagas;Outros idiomas exigidos
+pais;string;df_vagas;País de atuação da vaga
+prazo_contratacao;string;df_vagas;Se há prazo determinado para o contrato
+principais_atividades;string;df_vagas;Principais atividades e responsabilidades da função
+prioridade_vaga;string;df_vagas;Nível de urgência da contratação
+regiao;string;df_vagas;Região do estado (ex: capital, interior)
+requisitante;string;df_vagas;Gestor interno que requisitou a vaga
+solicitante_cliente;string;df_vagas;Nome do gestor solicitante no cliente
+superior_imediato;string;df_vagas;Nome do futuro superior imediato (necessita validação)
+telefone;string;df_vagas;"Telefone associado (campo pouco preenchido; origem incerta)"
+tipo_contratacao;string;df_vagas;Tipo de contratação (ex: PJ, CLT)
+titulo_vaga;string;df_vagas;Título/nome da vaga
+vaga_especifica_para_pcd;string;df_vagas;Indica se a vaga é específica para pessoas com deficiência (PCD)
+vaga_id;int;df_vagas;Identificador único da vaga
+vaga_sap;string;df_vagas;Indica se a vaga está relacionada a SAP
+valor_compra_1;string;df_vagas;Classe de valor referente ao custo do profissional (não monetário)
+valor_compra_2;string;df_vagas;Outra estimativa de custo do profissional (não monetário)
+valor_venda;string;df_vagas;Tipo ou classe de valor cobrado do cliente (não é valor monetário direto)
+viagens_requeridas;string;df_vagas;Indica se o cargo exige viagens
