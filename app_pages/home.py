@@ -2,28 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
-# import zipfile # REMOVA esta importação, pois não será mais usada
 
-# --- CAMINHOS DOS DADOS (SIMPLIFICADO) ---
-# A pasta 'data' agora deve conter os arquivos JSON diretamente.
-# O os.path.dirname(__file__) retorna o diretório do script atual (home.py, que está em app_pages).
-# '..' sobe um nível para a raiz do seu repositório.
-# 'data' entra na pasta de dados.
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 
-# --- REMOVA A LÓGICA DE DESCOMPACTAÇÃO ---
-# Essa seção inteira não é mais necessária, pois os arquivos já estão descompactados no Git.
-# if os.path.exists(ZIP_FILE):
-#     with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
-#         zip_ref.extractall(DATA_DIR)
-#     st.info("📦 Arquivos de dados descompactados com sucesso.")
-# else:
-#     st.warning(f"⚠️ Arquivo ZIP não encontrado em {ZIP_FILE}. Verifique o upload dos dados.")
-
-
-# --- CARREGAMENTO DOS DADOS (APENAS LEITURA DIRETA) ---
-# Use @st.cache_data para cachear os DataFrames, otimizando o desempenho.
-# Isso garante que os dados sejam carregados apenas uma vez, mesmo se a página for renderizada várias vezes.
 @st.cache_data
 def load_data():
     try:
@@ -96,7 +77,7 @@ def home():
     # Lembre-se que 'applicants' (candidatos_originais) agora está disponível
     # se você quiser usar os dados de 'applicants' para o total de candidatos,
     # em vez de somar os prospects por vaga.
-    total_candidatos_reais = applicants['id_candidato'].nunique() # Se cada linha é um candidato único
+    total_candidatos_reais = applicants['infos_basicas_codigo_profissional'].nunique() # Se cada linha é um candidato único
 
     col1, col2 = st.columns(2)
     col1.metric("Total de Vagas", total_vagas)
