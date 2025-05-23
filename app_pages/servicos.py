@@ -166,9 +166,6 @@ index_vagas = recursos_carregados["index_vagas"]
 metadados_vagas = recursos_carregados["metadados_vagas"]
 index_candidatos = recursos_carregados["index_candidatos"]
 metadados_candidatos = recursos_carregados["metadados_candidatos"] 
-index_prospects = recursos_carregados["index_prospects"]
-metadados_prospects = recursos_carregados["metadados_prospects"]
-
 
 # --- FUNÇÕES DE BUSCA DE SIMILARIDADE ---
 
