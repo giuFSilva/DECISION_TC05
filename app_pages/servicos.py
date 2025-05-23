@@ -149,9 +149,6 @@ def carregar_todos_dados_e_indices():
     recursos["index_candidatos"] = _carregar_faiss_index("candidatos")
     recursos["metadados_candidatos"] = _carregar_metadados("candidatos")
 
-    recursos["index_prospects"] = _carregar_faiss_index("prospects")
-    recursos["metadados_prospects"] = _carregar_metadados("prospects")
-
     return recursos
 
 # Carrega os recursos (modelo, dados, índices) uma única vez ao iniciar a aplicação
