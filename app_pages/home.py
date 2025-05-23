@@ -1,13 +1,33 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
+import zipfile
 
 
+# --- DESCOMPACTAÇÃO DOS DADOS ---
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
+ZIP_FILE = os.path.join(DATA_DIR, 'dados.zip')
+
+if os.path.exists(ZIP_FILE):
+    with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
+        zip_ref.extractall(DATA_DIR)
+    st.info("📦 Arquivos de dados descompactados com sucesso.")
+else:
+    st.warning(f"⚠️ Arquivo ZIP não encontrado em {ZIP_FILE}. Verifique o upload dos dados.")
+
+# --- CARREGAMENTO DOS DADOS ---
+try:
+    vagas = pd.read_json(os.path.join(DATA_DIR, "vagas.json"), orient='records')
+    prospects = pd.read_json(os.path.join(DATA_DIR, "prospects.json"), orient='records')
+except FileNotFoundError as e:
+    st.error(f"❌ Erro ao carregar arquivos JSON: {e}")
+    st.stop()
+
+
+# --- DASHBOARD ---
 def home():
     st.title("💼 Dashboard de Vagas e Candidatos")
-
-    vagas = pd.read_json("data/vagas.json", orient='records')
-    prospects = pd.read_json("data/prospects.json", orient='records')
 
     df_vagas = vagas.rename(columns={
         "id_vaga": "vaga_id",
@@ -34,7 +54,6 @@ def home():
     df_vagas = df_vagas.merge(candidatos_por_vaga, how='left', left_on='vaga_id', right_on='id_vaga')
     df_vagas['candidatos'] = df_vagas['candidatos'].fillna(0).astype(int)
 
-
     total_vagas = df_vagas['vaga_id'].nunique()
     total_candidatos = df_vagas['candidatos'].sum()
 
@@ -56,12 +75,7 @@ def home():
         color_discrete_sequence=['#1f77b4'],
         title='Vagas por Recrutador'
     )
-    fig1.update_layout(
-        template='plotly_dark',
-        height=300,
-        showlegend=False,
-        margin=dict(l=20, r=20, t=40, b=20)
-    )
+    fig1.update_layout(template='plotly_dark', height=300, showlegend=False)
     st.plotly_chart(fig1, use_container_width=True)
 
     st.subheader("🏢 Vagas por Cliente")
@@ -76,12 +90,7 @@ def home():
         color_discrete_sequence=['#3c8dbc'],
         title='Vagas por Cliente'
     )
-    fig2.update_layout(
-        template='plotly_dark',
-        height=300,
-        showlegend=False,
-        margin=dict(l=20, r=20, t=40, b=20)
-    )
+    fig2.update_layout(template='plotly_dark', height=300, showlegend=False)
     st.plotly_chart(fig2, use_container_width=True)
 
     st.subheader("🌍 Vagas que Exigem Idioma")
@@ -115,11 +124,7 @@ def home():
         title='Distribuição de Vagas por Idioma'
     )
     fig3.update_traces(textfont_size=12, textinfo='percent+label')
-    fig3.update_layout(
-        template='plotly_dark',
-        height=350,
-        margin=dict(l=20, r=20, t=40, b=20)
-    )
+    fig3.update_layout(template='plotly_dark', height=350)
     st.plotly_chart(fig3, use_container_width=True)
 
     st.markdown("---")
