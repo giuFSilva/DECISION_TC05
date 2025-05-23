@@ -7,10 +7,20 @@ from sentence_transformers import SentenceTransformer
 import pandas as pd
 
 # --- CONFIGURAÇÕES ---
-ARQUIVO_VAGAS = "C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/data/vagas.json"
-INDEX_PATH = "C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/models/index_vagas.faiss"
-META_PATH = "C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/models/vagas_metadados.pkl"
-EMBEDDING_MODEL = 'paraphrase-multilingual-mpnet-base-v2'
+import os
+
+# Diretório base onde o arquivo .py está rodando
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Pastas de dados e modelos
+DATA_DIR = os.path.join(BASE_DIR, '..', 'data')
+MODELS_DIR = os.path.join(BASE_DIR, '..', 'models')
+
+# Caminhos dos arquivos
+ARQUIVO_VAGAS = os.path.join(DATA_DIR, 'vagas.json')
+INDEX_PATH = os.path.join(MODELS_DIR, 'index_vagas.faiss')
+META_PATH = os.path.join(MODELS_DIR, 'vagas_metadados.pkl')
+
 
 CAMPOS_OBRIGATORIOS = [
     "info_titulo_vaga", "info_vaga_sap", "perfil_pais", "perfil_estado", "perfil_vaga_especifica_para_pcd",
