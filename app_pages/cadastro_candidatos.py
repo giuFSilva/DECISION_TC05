@@ -5,7 +5,8 @@ from datetime import datetime
 
 
 # 📂 Caminho do JSON
-PASTA_DADOS = r"C:\Users\giuliasilva\Desktop\Estudo\POS\TC - Modulo 05\application_web\data"
+# Caminho relativo à pasta 'data' na raiz do projeto
+PASTA_DADOS = os.path.join(os.path.dirname(__file__), '..', 'data')
 ARQUIVO_JSON = os.path.join(PASTA_DADOS, "applicants.json")
 
 # 🔧 Garantir que a pasta existe
