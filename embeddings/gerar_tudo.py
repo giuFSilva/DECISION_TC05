@@ -8,10 +8,9 @@ import logging
 from datetime import datetime
 
 # --- CONFIGURAÇÃO ---
-DATA_DIR = 'C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/data' # Ajuste conforme seu caminho
-MODEL_DIR = 'C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/models' # Ajuste conforme seu caminho
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, '..', 'models1')
 
-# Modelos que serão utilizados (adicione ou remova conforme necessidade)
 EMBEDDING_MODELS = {
     "original": 'paraphrase-multilingual-mpnet-base-v2',  # Seu modelo atual
     "e5_large": 'intfloat/multilingual-e5-large',           # Modelo mais novo e robusto
