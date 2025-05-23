@@ -7,7 +7,7 @@ import zipfile
 
 # --- DESCOMPACTAÇÃO DOS DADOS ---
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-ZIP_FILE = os.path.join(DATA_DIR, 'dados.zip')
+ZIP_FILE = os.path.join(DATA_DIR, 'applicants.zip')
 
 if os.path.exists(ZIP_FILE):
     with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
