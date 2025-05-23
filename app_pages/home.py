@@ -2,32 +2,70 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
-import zipfile
+# import zipfile # REMOVA esta importação, pois não será mais usada
 
-
-# --- DESCOMPACTAÇÃO DOS DADOS ---
+# --- CAMINHOS DOS DADOS (SIMPLIFICADO) ---
+# A pasta 'data' agora deve conter os arquivos JSON diretamente.
+# O os.path.dirname(__file__) retorna o diretório do script atual (home.py, que está em app_pages).
+# '..' sobe um nível para a raiz do seu repositório.
+# 'data' entra na pasta de dados.
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-ZIP_FILE = os.path.join(DATA_DIR, 'applicants.zip')
 
-if os.path.exists(ZIP_FILE):
-    with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
-        zip_ref.extractall(DATA_DIR)
-    st.info("📦 Arquivos de dados descompactados com sucesso.")
-else:
-    st.warning(f"⚠️ Arquivo ZIP não encontrado em {ZIP_FILE}. Verifique o upload dos dados.")
+# --- REMOVA A LÓGICA DE DESCOMPACTAÇÃO ---
+# Essa seção inteira não é mais necessária, pois os arquivos já estão descompactados no Git.
+# if os.path.exists(ZIP_FILE):
+#     with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
+#         zip_ref.extractall(DATA_DIR)
+#     st.info("📦 Arquivos de dados descompactados com sucesso.")
+# else:
+#     st.warning(f"⚠️ Arquivo ZIP não encontrado em {ZIP_FILE}. Verifique o upload dos dados.")
 
-# --- CARREGAMENTO DOS DADOS ---
-try:
-    vagas = pd.read_json(os.path.join(DATA_DIR, "vagas.json"), orient='records')
-    prospects = pd.read_json(os.path.join(DATA_DIR, "prospects.json"), orient='records')
-except FileNotFoundError as e:
-    st.error(f"❌ Erro ao carregar arquivos JSON: {e}")
-    st.stop()
+
+# --- CARREGAMENTO DOS DADOS (APENAS LEITURA DIRETA) ---
+# Use @st.cache_data para cachear os DataFrames, otimizando o desempenho.
+# Isso garante que os dados sejam carregados apenas uma vez, mesmo se a página for renderizada várias vezes.
+@st.cache_data
+def load_data():
+    try:
+        # Certifique-se de que 'applicants.json' também está na pasta 'data/'
+        vagas_path = os.path.join(DATA_DIR, "vagas.json")
+        prospects_path = os.path.join(DATA_DIR, "prospects.json")
+        applicants_path = os.path.join(DATA_DIR, "applicants.json") # Novo path para applicants.json
+
+        # Verificação adicional para garantir que os arquivos existem antes de tentar ler
+        if not os.path.exists(vagas_path):
+            st.error(f"❌ Erro: Arquivo 'vagas.json' não encontrado em {vagas_path}")
+            st.stop()
+        if not os.path.exists(prospects_path):
+            st.error(f"❌ Erro: Arquivo 'prospects.json' não encontrado em {prospects_path}")
+            st.stop()
+        if not os.path.exists(applicants_path):
+            st.error(f"❌ Erro: Arquivo 'applicants.json' não encontrado em {applicants_path}")
+            st.stop()
+
+        # Carrega os DataFrames
+        df_vagas = pd.read_json(vagas_path, orient='records')
+        df_prospects = pd.read_json(prospects_path, orient='records')
+        df_applicants = pd.read_json(applicants_path, orient='records') # Carrega applicants.json
+
+        return df_vagas, df_prospects, df_applicants
+    except FileNotFoundError as e:
+        st.error(f"❌ Erro ao carregar arquivos JSON: {e}")
+        st.stop()
+    except Exception as e:
+        st.error(f"❌ Ocorreu um erro inesperado ao carregar os dados: {e}")
+        st.stop()
+
+# Chama a função para carregar os dados
+vagas, prospects, applicants = load_data()
 
 
 # --- DASHBOARD ---
 def home():
     st.title("💼 Dashboard de Vagas e Candidatos")
+
+    # Mantenha o restante do seu código de dashboard inalterado aqui
+    # ... todo o código de transformação e visualização do dashboard ...
 
     df_vagas = vagas.rename(columns={
         "id_vaga": "vaga_id",
@@ -55,11 +93,14 @@ def home():
     df_vagas['candidatos'] = df_vagas['candidatos'].fillna(0).astype(int)
 
     total_vagas = df_vagas['vaga_id'].nunique()
-    total_candidatos = df_vagas['candidatos'].sum()
+    # Lembre-se que 'applicants' (candidatos_originais) agora está disponível
+    # se você quiser usar os dados de 'applicants' para o total de candidatos,
+    # em vez de somar os prospects por vaga.
+    total_candidatos_reais = applicants['id_candidato'].nunique() # Se cada linha é um candidato único
 
     col1, col2 = st.columns(2)
     col1.metric("Total de Vagas", total_vagas)
-    col2.metric("Total de Candidatos", total_candidatos)
+    col2.metric("Total de Candidatos", total_candidatos_reais) # Usando o df 'applicants'
 
     st.markdown("---")
 
