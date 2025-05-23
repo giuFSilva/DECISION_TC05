@@ -5,3 +5,5 @@ sentence-transformers
 streamlit
 torch
 plotly
+streamlit>=1.22.0
+torch>=2.0.1
