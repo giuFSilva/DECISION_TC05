@@ -1,11 +1,6 @@
 import os
 import sys
 
-# --- GARANTINDO O CAMINHO PARA 'embeddings' NO sys.path ---
-# Calcula o caminho absoluto para a pasta 'embeddings'
-# Pega o diretório do arquivo atual (servicos.py): C:\Users\...\application_web\app_pages
-# Sobe um nível para 'application_web': C:\Users\...\application_web
-# Desce para 'embeddings': C:\Users\...\application_web\embeddings
 embeddings_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'embeddings'))
 
 # Adiciona o caminho ao sys.path se ainda não estiver lá
@@ -26,10 +21,14 @@ from sentence_transformers import SentenceTransformer
 # A importação do 'gerar_tudo' agora deve funcionar
 from gerar_tudo import extrair_texto_vaga, extrair_texto_candidato, extrair_texto_prospect
 
+# Caminho base do projeto (onde está rodando este script)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# --- CONFIGURAÇÃO ---
-MODEL_DIR = 'C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/models1'
-DATA_DIR = 'C:/Users/giuliasilva/Desktop/Estudo/POS/TC - Modulo 05/application_web/data'
+# Diretórios de modelos e dados (um nível acima da pasta onde está este script)
+MODEL_DIR = os.path.join(BASE_DIR, '..', 'models1')
+DATA_DIR = os.path.join(BASE_DIR, '..', 'data')
+
+# Nome do modelo de embeddings
 EMBEDDING_MODEL_NAME = 'paraphrase-multilingual-mpnet-base-v2'
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
