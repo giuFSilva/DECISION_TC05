@@ -11,7 +11,7 @@ import pandas as pd # Importe a biblioteca pandas
 EMBEDDING_MODEL_NAME = "paraphrase-multilingual-mpnet-base-v2"  # Modelo para embeddings
 BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # Diretório base do script
 DATA_DIR = os.path.join(BASE_DIR, "../data") # Diretório para dados
-MODEL_DIR = os.path.join(BASE_DIR, "../models") # Diretório para modelos
+MODEL_DIR = os.path.join(BASE_DIR, "../models1") # Diretório para modelos
 
 # --- Configuração do Logging (Opcional, mas Recomendado) ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
