@@ -16,6 +16,8 @@ from app_pages.cadastro_vagas import cadastro_vagas
 from app_pages.cadastro_candidatos import cadastro_candidatos
 from app_pages import servicos
 
+st.write(f"Python version: {sys.version}")
+
 
 # Inicializa o estado da sessão para navegação
 if "pagina" not in st.session_state:
