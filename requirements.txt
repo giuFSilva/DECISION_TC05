@@ -1,5 +1,5 @@
+torch==2.7.0
 streamlit==1.22.0
-torch==2.0.1
 pandas
 numpy
 sentence-transformers
